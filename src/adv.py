@@ -1,5 +1,6 @@
 from room import Room
 import sys
+from player import Player
 
 # Declare all the rooms
 
@@ -39,7 +40,7 @@ room['treasure'].s_to = room['narrow']
 #
 
 # Make a new player object that is currently in the 'outside' room.
-
+player1 = Player(room['outside'])
 # Write a loop that:
 #
 # * Prints the current room name
@@ -50,21 +51,28 @@ room['treasure'].s_to = room['narrow']
 # Print an error message if the movement isn't allowed.
 #
 # If the user enters "q", quit the game.
+def move(player, direction):
+    if hasattr(player.location,direction):
+        player1.location = getattr(player1.location,direction)
+    else:
+        print("There is nothing in that direction.")
+
 while True:
-    print("room: ",room['outside'].name)
+    cur_room = player1.location
+    print("room: ",cur_room)
     command = input("Please enter n,s,e or w for direction to move: ")
     if command == 'n':
         print("moving using n")
-        break
+        move(player1,'n_to')
     elif command == 's':
         print("moving using s")
-        break
+        move(player1,'s_to')
     elif command == 'e':
         print("moving using e")
-        break
+        move(player1,'e_to')
     elif command == 'w':
         print("moving using w")
-        break
+        move(player1, 'w_to')
     elif command == 'q':
         print("quitting game")
         sys.exit()
