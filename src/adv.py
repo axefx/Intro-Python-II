@@ -1,4 +1,5 @@
 from room import Room
+import sys
 
 # Declare all the rooms
 
@@ -49,3 +50,24 @@ room['treasure'].s_to = room['narrow']
 # Print an error message if the movement isn't allowed.
 #
 # If the user enters "q", quit the game.
+while True:
+    print("room: ",room['outside'].name)
+    command = input("Please enter n,s,e or w for direction to move: ")
+    if command == 'n':
+        print("moving using n")
+        break
+    elif command == 's':
+        print("moving using s")
+        break
+    elif command == 'e':
+        print("moving using e")
+        break
+    elif command == 'w':
+        print("moving using w")
+        break
+    elif command == 'q':
+        print("quitting game")
+        sys.exit()
+    else:
+        print("movement not allowed game")
+        print("press q to exit")
